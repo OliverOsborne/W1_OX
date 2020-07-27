@@ -7,13 +7,24 @@ namespace W1_OX
 {
     public partial class TicTacToe : Form
     {
+
+        /// <summary>
+        /// 
+        ///     Variable initialisation.
+        ///         Create variables to be used throughout the program.
+        ///         Create ease-of-use names for reference.
+        /// 
+        /// </summary>
+        
         private System.Drawing.Color ACTIVE = System.Drawing.Color.MediumSeaGreen;
         private System.Drawing.Color INACTIVE = System.Drawing.Color.IndianRed;
+
         private Bitmap X = Resources.Xs;
         private Bitmap O = Resources.Os;
         private Bitmap BLANK = Resources.Blank;
         private Bitmap WinnerX = Resources.WinnerXs;
         private Bitmap WinnerO = Resources.WinnerOs;
+
         private char turn = 'x';
         private char mode = 'p';
         private int p1Score = 0;
@@ -22,22 +33,62 @@ namespace W1_OX
         private int eChoice;
         private int cChoice;
         private bool roundOver = false;
+
         private int LT = 0, MT = 1, RT = 2, // LeftTop, MiddleTop, RightTop
                     LM = 3, MM = 4, RM = 5, // LeftMiddle, MiddleMiddle, RightMiddle
                     LB = 6, MB = 7, RB = 8; // LeftBottom, MiddleBottom, RightBottom
-        private char[] tiles = { 'b', 'b', 'b',
-                                 'b', 'b', 'b',
-                                 'b', 'b', 'b'};
-        private System.Windows.Forms.Timer rTimer = new System.Windows.Forms.Timer();
-        private System.Windows.Forms.Timer eTimer = new System.Windows.Forms.Timer();
-        private System.Windows.Forms.Timer cTimer = new System.Windows.Forms.Timer();
 
+        private char[] tiles = { 'b', 'b', 'b',  // b = blank
+                                 'b', 'b', 'b',  // o = naught
+                                 'b', 'b', 'b'}; // x = cross
+
+        private System.Windows.Forms.Timer rTimer = new System.Windows.Forms.Timer(); // reset timer
+        private System.Windows.Forms.Timer eTimer = new System.Windows.Forms.Timer(); // easy timer
+        private System.Windows.Forms.Timer cTimer = new System.Windows.Forms.Timer(); // challenging timer
+
+        /// <summary>
+        /// 
+        ///     Class Constructor.
+        ///         Begin the program.
+        /// 
+        /// </summary>
         public TicTacToe()
         {
             InitializeComponent();
             Start();
         }
 
+        /// <summary>
+        /// 
+        ///     Event trigger for each tile.
+        ///         Check which mode is active.
+        ///             If in player mode, run without timers.
+        ///             If in easy mode, activate easy timer that chooses a tile for the computer's turn.
+        ///             If in challenging mode, activate challenging timer that chooses a tile for the computer's turn.
+        ///         Check the round isn't over and that the current tile is empty (blank).
+        ///         Check who's turn it was that clicked on the tile.
+        ///             If X.
+        ///                 Update tile image with X image.
+        ///                 Update tile array with an x.
+        ///                 Change the turn to O.
+        ///                 Check if there was a winner.
+        ///                 Check if there was a draw.
+        ///             If O.
+        ///                 Update tile image with O image.
+        ///                 Update tile array with an o.
+        ///                 Change the turn to X.
+        ///                 Check if there was a winner.
+        ///                 Check if there was a draw.
+        /// 
+        /// </summary>
+
+        /// <summary>
+        /// 
+        ///     Event trigger for Left Top tile.
+        /// 
+        /// </summary>
+        /// <param name="sender"> TicTacToe game object. </param>
+        /// <param name="e"></param>
         private void imgLeftTop_Click(object sender, EventArgs e)
         {
             if (mode == 'p')
@@ -129,6 +180,13 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Event trigger for Middle Top tile.
+        /// 
+        /// </summary>
+        /// <param name="sender"> TicTacToe game object. </param>
+        /// <param name="e"></param>
         private void imgMiddleTop_Click(object sender, EventArgs e)
         {
             if (mode == 'p')
@@ -219,6 +277,13 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Event trigger for Right Top tile.
+        /// 
+        /// </summary>
+        /// <param name="sender"> TicTacToe game object. </param>
+        /// <param name="e"></param>
         private void imgRightTop_Click(object sender, EventArgs e)
         {
             if (mode == 'p')
@@ -309,6 +374,13 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Event trigger for Left Middle tile.
+        /// 
+        /// </summary>
+        /// <param name="sender"> TicTacToe game object. </param>
+        /// <param name="e"></param>
         private void imgLeftMiddle_Click(object sender, EventArgs e)
         {
             if (mode == 'p')
@@ -399,6 +471,13 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Event trigger for Middle Middle tile.
+        /// 
+        /// </summary>
+        /// <param name="sender"> TicTacToe game object. </param>
+        /// <param name="e"></param>
         private void imgMiddleMiddle_Click(object sender, EventArgs e)
         {
             if (mode == 'p')
@@ -489,6 +568,13 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Event trigger for Right Middle tile.
+        /// 
+        /// </summary>
+        /// <param name="sender"> TicTacToe game object. </param>
+        /// <param name="e"></param>
         private void imgRightMiddle_Click(object sender, EventArgs e)
         {
             if (mode == 'p')
@@ -579,6 +665,13 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Event trigger for Left Bottom tile.
+        /// 
+        /// </summary>
+        /// <param name="sender"> TicTacToe game object. </param>
+        /// <param name="e"></param>
         private void imgLeftBottom_Click(object sender, EventArgs e)
         {
             if (mode == 'p')
@@ -669,6 +762,13 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Event trigger for Middle Bottom tile.
+        /// 
+        /// </summary>
+        /// <param name="sender"> TicTacToe game object. </param>
+        /// <param name="e"></param>
         private void imgMiddleBottom_Click(object sender, EventArgs e)
         {
             if (mode == 'p')
@@ -759,6 +859,13 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Event trigger for Right Bottom tile.
+        /// 
+        /// </summary>
+        /// <param name="sender"> TicTacToe game object. </param>
+        /// <param name="e"></param>
         private void imgRightBottom_Click(object sender, EventArgs e)
         {
             if (mode == 'p')
@@ -849,6 +956,13 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Clear all tiles on the board.
+        ///         Set each tile array value to blank.
+        ///         Set each tile image to blank.
+        /// 
+        /// </summary>
         private void ClearTiles()
         {
             for (int i = 0; i < tiles.Length; i++)
@@ -861,6 +975,23 @@ namespace W1_OX
             imgLeftBottom.Image = imgMiddleBottom.Image = imgRightBottom.Image = BLANK;
         }
 
+        /// <summary>
+        /// 
+        ///     Event trigger for each mode button.
+        ///         Set the mode.
+        ///         Set the active button.
+        ///         Start the game.
+        ///         
+        /// 
+        /// </summary>
+
+        /// <summary>
+        /// 
+        ///     Event trigger for easy mode button.
+        /// 
+        /// </summary>
+        /// <param name="sender"> TicTacToe game object. </param>
+        /// <param name="e"></param>
         private void btnEasy_Click(object sender, EventArgs e)
         {
             mode = 'e';
@@ -869,6 +1000,13 @@ namespace W1_OX
 
         }
 
+        /// <summary>
+        /// 
+        ///     Event trigger for challenging mode button.
+        /// 
+        /// </summary>
+        /// <param name="sender"> TicTacToe game object. </param>
+        /// <param name="e"></param>
         private void btnChallenging_Click(object sender, EventArgs e)
         {
             mode = 'c';
@@ -876,6 +1014,13 @@ namespace W1_OX
             Start();
         }
 
+        /// <summary>
+        /// 
+        ///     Event trigger for player mode button.
+        /// 
+        /// </summary>
+        /// <param name="sender"> TicTacToe game object. </param>
+        /// <param name="e"></param>
         private void btnPlayer_Click(object sender, EventArgs e)
         {
             mode = 'p';
@@ -883,6 +1028,14 @@ namespace W1_OX
             Start();
         }
 
+        /// <summary>
+        /// 
+        ///     Visually activate a button.
+        ///         Check active mode.
+        ///         Update background colours to active/inactive.
+        /// 
+        /// </summary>
+        /// <param name="button"> Button mode name. </param>
         private void ActivateButton(string button)
         {
             if (button == "Easy")
@@ -911,6 +1064,13 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Flip turn.
+        ///         If X, set to O.
+        ///         If O, set to X.
+        /// 
+        /// </summary>
         private void UpdateTurn()
         {
             if (turn == 'x')
@@ -923,6 +1083,16 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Visually update each tile image.
+        ///         Check which tile to change.
+        ///             If X, set X image.
+        ///             If O, set O image.
+        /// 
+        /// </summary>
+        /// <param name="tile"> Name of the tile to update. </param>
+        /// <param name="type"> Type of tile to update to (X/O). </param>
         private void UpdateTile(string tile, char type)
         {
             if (tile == "LeftTop")
@@ -1026,6 +1196,14 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Reset the board.
+        ///         Set all tiles to blank.
+        ///         Set the turn back to X.
+        ///         Allow tiles to be selected again.
+        /// 
+        /// </summary>
         private void Reset()
         {
             ClearTiles();
@@ -1034,6 +1212,13 @@ namespace W1_OX
             ActivateTiles();
         }
 
+        /// <summary>
+        /// 
+        ///     Begin the game.
+        ///         Check for mode.
+        ///         Activate relative button.
+        /// 
+        /// </summary>
         private void Start()
         {
             Reset();
@@ -1051,6 +1236,15 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Easy mode tile selector.
+        ///         Check if the round isn't over and that it is O's (computer's) turn.
+        ///         Run tile selector logic.
+        ///         Check which tile was chosen
+        ///         Invoke specified tile.
+        /// 
+        /// </summary>
         private void BeginEasy()
         {
             if (!roundOver && turn == 'o')
@@ -1096,6 +1290,15 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Challenging mode tile selector.
+        ///         Check if the round isn't over and that it is O's (computer's) turn.
+        ///         Run tile selector logic.
+        ///         Check which tile was chosen
+        ///         Invoke specified tile.
+        /// 
+        /// </summary>
         private void BeginChallenging()
         {
             if (!roundOver && turn == 'o')
@@ -1141,6 +1344,13 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Easy mode tile selector logic.
+        ///         Randomly choose a tile.
+        /// 
+        /// </summary>
+        /// <returns> Returns the integer for the position in the tiles array. </returns>
         private int CompChoiceEasy()
         {
             eChoice = RandomTile();
@@ -1148,6 +1358,29 @@ namespace W1_OX
             return eChoice;
         }
 
+        /// <summary>
+        /// 
+        ///     Challenging mode tile selector logic.
+        ///         Check where previous tile was placed.
+        ///         Try to win by creating a line of Os.
+        ///         If there were no previous tiles, randomly place one to start off.
+        ///         
+        ///         b = blank tile.
+        ///         o = o tile.
+        ///         x = x tile.
+        ///         - = other tile positions (visual purposes).
+        ///         
+        ///         Example:
+        ///         // - - -
+        ///         // - - -
+        ///         // b o o
+        ///         
+        ///         This checks if the bottom left tile is blank whilst
+        ///         the bottom middle and bottom right tiles are Os. This
+        ///         will place an O at the bottom left tile.
+        /// 
+        /// </summary>
+        /// <returns> Returns the integer for the position in the tiles array. </returns>
         private int CompChoiceChallenging()
         {
 
@@ -2081,6 +2314,14 @@ namespace W1_OX
             return cChoice;
         }
 
+        /// <summary>
+        /// 
+        ///     Check if no tiles have been already placed as an O.
+        ///         Run through tiles array.
+        ///         Return false if an O is present.
+        /// 
+        /// </summary>
+        /// <returns> Return false if O is present, true if not. </returns>
         private bool isFirstTile()
         {
             for (int i = 0; i < tiles.Length; i++)
@@ -2093,6 +2334,14 @@ namespace W1_OX
             return true;
         }
 
+        /// <summary>
+        /// 
+        ///     Random tile selector.
+        ///         Randomly generate a number.
+        ///         Number corresponds to position in the tiles array.
+        /// 
+        /// </summary>
+        /// <returns> Returns an integer for the tiles array. </returns>
         private int RandomTile()
         {
             var ran = new Random();
@@ -2100,6 +2349,15 @@ namespace W1_OX
             return ran.Next(LT, RB + 1);
         }
 
+        /// <summary>
+        /// 
+        ///     Check if X has won.
+        ///         Go through each possible winning combination.
+        ///         If X has won, set their X tiles to the winning tiles image.
+        ///         Update their score.
+        ///         Start round cleanup timer.
+        /// 
+        /// </summary>
         private void CheckWinnerX()
         {
             if (tiles[LT] == 'x' && tiles[MT] == 'x' && tiles[RT] == 'x')
@@ -2256,6 +2514,15 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Check if O has won.
+        ///         Go through each possible winning combination.
+        ///         If O has won, set their O tiles to the winning tiles image.
+        ///         Update their score.
+        ///         Start round cleanup timer.
+        /// 
+        /// </summary>
         private void CheckWinnerO()
         {
             if (tiles[LT] == 'o' && tiles[MT] == 'o' && tiles[RT] == 'o')
@@ -2412,6 +2679,14 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Check if there is a draw..
+        ///         Go through each tile and check if they aren't blank.
+        ///         If all tiles are full and not blank, draw has been reached.
+        ///         Start round cleanup timer.
+        /// 
+        /// </summary>
         private void CheckDraw()
         {
             if (tiles[LT] != 'b' && tiles[MT] != 'b' && tiles[RT] != 'b' &&
@@ -2431,6 +2706,12 @@ namespace W1_OX
             }
         }
 
+        /// <summary>
+        /// 
+        ///     Disable tiles.
+        ///         Prevent player from choosing computer's tile while it decides.
+        /// 
+        /// </summary>
         private void DeactivateTiles()
         {
             imgLeftTop.Enabled = imgMiddleTop.Enabled = imgRightTop.Enabled =
@@ -2438,6 +2719,12 @@ namespace W1_OX
             imgLeftBottom.Enabled = imgMiddleBottom.Enabled = imgRightBottom.Enabled = false;
         }
 
+        /// <summary>
+        /// 
+        ///     Enable tiles.
+        ///         Allow player to choose a tile.
+        /// 
+        /// </summary>
         private void ActivateTiles()
         {
             imgLeftTop.Enabled = imgMiddleTop.Enabled = imgRightTop.Enabled =
@@ -2445,18 +2732,45 @@ namespace W1_OX
             imgLeftBottom.Enabled = imgMiddleBottom.Enabled = imgRightBottom.Enabled = true;
         }
 
+        /// <summary>
+        /// 
+        ///     Round cleanup event.
+        ///         Stop the timer.
+        ///         Reset the game.
+        /// 
+        /// </summary>
+        /// <param name="myObject"> TicTacToe game object. </param>
+        /// <param name="myEventArgs"></param>
         private void NextRoundCleanUp(Object myObject, EventArgs myEventArgs)
         {
             rTimer.Stop();
             Reset();
         }
 
+        /// <summary>
+        /// 
+        ///     Easy mode choice event.
+        ///         Stop the timer.
+        ///         Start next round of easy mode.
+        /// 
+        /// </summary>
+        /// <param name="myObject"> TicTacToe game object. </param>
+        /// <param name="myEventArgs"></param>
         private void ComputerChoiceEasy(Object myObject, EventArgs myEventArgs)
         {
             eTimer.Stop();
             BeginEasy();
         }
 
+        /// <summary>
+        /// 
+        ///     Challenging mode choice event.
+        ///         Stop the timer.
+        ///         Start next round of challenging mode.
+        /// 
+        /// </summary>
+        /// <param name="myObject"> TicTacToe game object. </param>
+        /// <param name="myEventArgs"></param>
         private void ComputerChoiceChallenging(Object myObject, EventArgs myEventArgs)
         {
             cTimer.Stop();
